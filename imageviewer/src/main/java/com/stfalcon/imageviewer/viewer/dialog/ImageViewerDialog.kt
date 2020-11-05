@@ -18,6 +18,8 @@ package com.stfalcon.imageviewer.viewer.dialog
 
 import android.content.Context
 import android.view.KeyEvent
+import android.view.LayoutInflater
+import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import com.stfalcon.imageviewer.R
@@ -81,6 +83,17 @@ internal class ImageViewerDialog<T>(
         viewerView.updateTransitionImage(imageView)
     }
 
+    private fun setupOverlayView() {
+        val overlayView = LayoutInflater.from(viewerView.context).inflate(R.layout.view_overlay, null)
+        overlayView.findViewById<ImageButton>(R.id.overlay_close_button).setOnClickListener {
+            close()
+        }
+        overlayView.findViewById<ImageButton>(R.id.overlay_more_button).setOnClickListener {
+            builderData.onMenuListener?.onMenu(getCurrentPosition())
+        }
+        viewerView.overlayView = overlayView
+    }
+
     private fun onDialogKeyEvent(keyCode: Int, event: KeyEvent): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK &&
             event.action == KeyEvent.ACTION_UP &&
@@ -103,8 +116,10 @@ internal class ImageViewerDialog<T>(
 
             containerPadding = builderData.containerPaddingPixels
             imagesMargin = builderData.imageMarginPixels
-            overlayView = builderData.overlayView
 
+            if (builderData.isOverlayEnable) {
+                setupOverlayView()
+            }
             setBackgroundColor(builderData.backgroundColor)
             setImages(builderData.images, builderData.startPosition, builderData.imageLoader)
 

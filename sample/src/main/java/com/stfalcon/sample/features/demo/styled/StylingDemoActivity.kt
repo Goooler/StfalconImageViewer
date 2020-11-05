@@ -80,8 +80,12 @@ class StylingDemoActivity : BaseActivity() {
         builder.allowZooming(options.isPropertyEnabled(ZOOMING))
 
         if (options.isPropertyEnabled(SHOW_OVERLAY)) {
-            setupOverlayView(posters, startPosition)
-            builder.withOverlayView(overlayView)
+            builder.enableOverlayView()
+            builder.withMenuListener {
+                showShortToast("$it")
+            }
+//            setupOverlayView(posters, startPosition)
+//            builder.withOverlayView(overlayView)
         }
 
         if (options.isPropertyEnabled(RANDOM_BACKGROUND)) {

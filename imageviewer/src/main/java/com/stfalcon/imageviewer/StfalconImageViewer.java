@@ -17,13 +17,17 @@
 package com.stfalcon.imageviewer;
 
 import android.content.Context;
+import android.os.Build;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import androidx.annotation.*;
 import androidx.core.content.ContextCompat;
 import com.stfalcon.imageviewer.listeners.OnDismissListener;
 import com.stfalcon.imageviewer.listeners.OnImageChangeListener;
+import com.stfalcon.imageviewer.listeners.OnMenuListener;
 import com.stfalcon.imageviewer.loader.ImageLoader;
 import com.stfalcon.imageviewer.viewer.builder.BuilderData;
 import com.stfalcon.imageviewer.viewer.dialog.ImageViewerDialog;
@@ -132,6 +136,11 @@ public class StfalconImageViewer<T> {
             this.data = new BuilderData<>(images, imageLoader);
         }
 
+        public Builder<T> enableOverlayView() {
+            this.data.setOverlayEnable(true);
+            return this;
+        }
+
         /**
          * Sets a position to start viewer from.
          *
@@ -159,17 +168,6 @@ public class StfalconImageViewer<T> {
          */
         public Builder<T> withBackgroundColorResource(@ColorRes int color) {
             return this.withBackgroundColor(ContextCompat.getColor(context, color));
-        }
-
-        /**
-         * Sets custom overlay view to be shown over the viewer.
-         * Commonly used for image description or counter displaying.
-         *
-         * @return This Builder object to allow calls chaining
-         */
-        public Builder<T> withOverlayView(View view) {
-            this.data.setOverlayView(view);
-            return this;
         }
 
         /**
@@ -295,6 +293,11 @@ public class StfalconImageViewer<T> {
          */
         public Builder<T> withDismissListener(OnDismissListener onDismissListener) {
             this.data.setOnDismissListener(onDismissListener);
+            return this;
+        }
+
+        public Builder<T> withMenuListener(OnMenuListener onMenuListener) {
+            this.data.setOnMenuListener(onMenuListener);
             return this;
         }
 
