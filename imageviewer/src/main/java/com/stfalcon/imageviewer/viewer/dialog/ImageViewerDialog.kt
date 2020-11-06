@@ -19,16 +19,19 @@ package com.stfalcon.imageviewer.viewer.dialog
 import android.content.Context
 import android.view.KeyEvent
 import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import com.stfalcon.imageviewer.R
+import com.stfalcon.imageviewer.common.extensions.makeInvisible
 import com.stfalcon.imageviewer.viewer.builder.BuilderData
 import com.stfalcon.imageviewer.viewer.view.ImageViewerView
 
 internal class ImageViewerDialog<T>(
-    context: Context,
-    private val builderData: BuilderData<T>
+        context: Context,
+        private val builderData: BuilderData<T>
 ) {
 
     private val dialog: AlertDialog
@@ -43,6 +46,7 @@ internal class ImageViewerDialog<T>(
 
     init {
         setupViewerView()
+
         dialog = AlertDialog
             .Builder(context, dialogStyle)
             .setView(viewerView)
@@ -91,6 +95,7 @@ internal class ImageViewerDialog<T>(
         overlayView.findViewById<ImageButton>(R.id.overlay_more_button).setOnClickListener {
             builderData.onMenuListener?.onMenu(getCurrentPosition())
         }
+        overlayView.makeInvisible()
         viewerView.overlayView = overlayView
     }
 
