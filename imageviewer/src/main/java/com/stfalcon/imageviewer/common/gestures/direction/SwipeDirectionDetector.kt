@@ -19,6 +19,8 @@ package com.stfalcon.imageviewer.common.gestures.direction
 import android.content.Context
 import android.view.MotionEvent
 import android.view.ViewConfiguration
+import kotlin.math.atan2
+import kotlin.math.sqrt
 
 internal class SwipeDirectionDetector(
     context: Context,
@@ -78,13 +80,13 @@ internal class SwipeDirectionDetector(
      * @return the angle between two points
      */
     private fun getAngle(x1: Float, y1: Float, x2: Float, y2: Float): Double {
-        val rad = Math.atan2((y1 - y2).toDouble(), (x2 - x1).toDouble()) + Math.PI
+        val rad = atan2((y1 - y2).toDouble(), (x2 - x1).toDouble()) + Math.PI
         return (rad * 180 / Math.PI + 180) % 360
     }
 
     private fun getEventDistance(ev: MotionEvent): Float {
         val dx = ev.getX(0) - startX
         val dy = ev.getY(0) - startY
-        return Math.sqrt((dx * dx + dy * dy).toDouble()).toFloat()
+        return sqrt((dx * dx + dy * dy).toDouble()).toFloat()
     }
 }

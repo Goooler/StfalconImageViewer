@@ -27,27 +27,16 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import androidx.core.view.GestureDetectorCompat
 import com.stfalcon.imageviewer.R
-import com.stfalcon.imageviewer.common.extensions.addOnPageChangeListener
-import com.stfalcon.imageviewer.common.extensions.animateAlpha
-import com.stfalcon.imageviewer.common.extensions.applyMargin
-import com.stfalcon.imageviewer.common.extensions.copyBitmapFrom
-import com.stfalcon.imageviewer.common.extensions.isRectVisible
-import com.stfalcon.imageviewer.common.extensions.isVisible
-import com.stfalcon.imageviewer.common.extensions.makeGone
-import com.stfalcon.imageviewer.common.extensions.makeInvisible
-import com.stfalcon.imageviewer.common.extensions.makeVisible
-import com.stfalcon.imageviewer.common.extensions.switchVisibilityWithAnimation
+import com.stfalcon.imageviewer.common.extensions.*
 import com.stfalcon.imageviewer.common.gestures.detector.SimpleOnGestureListener
 import com.stfalcon.imageviewer.common.gestures.direction.SwipeDirection
-import com.stfalcon.imageviewer.common.gestures.direction.SwipeDirection.DOWN
-import com.stfalcon.imageviewer.common.gestures.direction.SwipeDirection.LEFT
-import com.stfalcon.imageviewer.common.gestures.direction.SwipeDirection.RIGHT
-import com.stfalcon.imageviewer.common.gestures.direction.SwipeDirection.UP
+import com.stfalcon.imageviewer.common.gestures.direction.SwipeDirection.*
 import com.stfalcon.imageviewer.common.gestures.direction.SwipeDirectionDetector
 import com.stfalcon.imageviewer.common.gestures.dismiss.SwipeToDismissHandler
 import com.stfalcon.imageviewer.common.pager.MultiTouchViewPager
 import com.stfalcon.imageviewer.loader.ImageLoader
 import com.stfalcon.imageviewer.viewer.adapter.ImagesPagerAdapter
+import kotlin.math.abs
 
 internal class ImageViewerView<T> @JvmOverloads constructor(
     context: Context,
@@ -117,8 +106,8 @@ internal class ImageViewerView<T> @JvmOverloads constructor(
 
     private val shouldDismissToBottom: Boolean
         get() = externalTransitionImageView == null
-            || !externalTransitionImageView.isRectVisible
-            || !isAtStartPosition
+                || !externalTransitionImageView.isRectVisible
+                || !isAtStartPosition
 
     private val isAtStartPosition: Boolean
         get() = currentPosition == startPosition
@@ -159,7 +148,8 @@ internal class ImageViewerView<T> @JvmOverloads constructor(
         //one more tiny kludge to prevent single tap a one-finger zoom which is broken by the SDK
         if (wasDoubleTapped &&
             event.action == MotionEvent.ACTION_MOVE &&
-            event.pointerCount == 1) {
+            event.pointerCount == 1
+        ) {
             return true
         }
 
@@ -320,12 +310,10 @@ internal class ImageViewerView<T> @JvmOverloads constructor(
     }
 
     private fun dispatchOverlayTouch(event: MotionEvent): Boolean =
-        overlayView
-            ?.let { it.isVisible && it.dispatchTouchEvent(event) }
-            ?: false
+        overlayView?.let { it.isVisible && it.dispatchTouchEvent(event) } == true
 
     private fun calculateTranslationAlpha(translationY: Float, translationLimit: Int): Float =
-        1.0f - 1.0f / translationLimit.toFloat() / 4f * Math.abs(translationY)
+        1.0f - 1.0f / translationLimit.toFloat() / 4f * abs(translationY)
 
     private fun createSwipeDirectionDetector() =
         SwipeDirectionDetector(context) { swipeDirection = it }
@@ -347,16 +335,17 @@ internal class ImageViewerView<T> @JvmOverloads constructor(
     private fun createScaleGestureDetector() =
         ScaleGestureDetector(context, ScaleGestureDetector.SimpleOnScaleGestureListener())
 
-    private fun createSwipeToDismissHandler()
-        : SwipeToDismissHandler = SwipeToDismissHandler(
+    private fun createSwipeToDismissHandler(): SwipeToDismissHandler = SwipeToDismissHandler(
         swipeView = dismissContainer,
         shouldAnimateDismiss = { shouldDismissToBottom },
         onDismiss = { animateClose() },
-        onSwipeViewMove = ::handleSwipeViewMove)
+        onSwipeViewMove = ::handleSwipeViewMove
+    )
 
     private fun createTransitionImageAnimator(transitionImageView: ImageView?) =
         TransitionImageAnimator(
             externalImage = transitionImageView,
             internalImage = this.transitionImageView,
-            internalImageContainer = this.transitionImageContainer)
+            internalImageContainer = this.transitionImageContainer
+        )
 }

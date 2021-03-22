@@ -20,8 +20,14 @@ import android.content.Context;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import androidx.annotation.*;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.ColorRes;
+import androidx.annotation.DimenRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Px;
 import androidx.core.content.ContextCompat;
+
 import com.stfalcon.imageviewer.listeners.OnDismissListener;
 import com.stfalcon.imageviewer.listeners.OnImageChangeListener;
 import com.stfalcon.imageviewer.loader.ImageLoader;
@@ -36,9 +42,9 @@ import java.util.List;
 @SuppressWarnings({"unused", "WeakerAccess"})
 public class StfalconImageViewer<T> {
 
-    private Context context;
-    private BuilderData<T> builderData;
-    private ImageViewerDialog<T> dialog;
+    private final Context context;
+    private final BuilderData<T> builderData;
+    private final ImageViewerDialog<T> dialog;
 
     protected StfalconImageViewer(@NonNull Context context, @NonNull BuilderData<T> builderData) {
         this.context = context;
@@ -85,7 +91,7 @@ public class StfalconImageViewer<T> {
      * Updates an existing images list if a new list is not empty, otherwise closes the viewer
      */
     public void updateImages(T[] images) {
-        updateImages(new ArrayList<>(Arrays.asList(images)));
+        updateImages(Arrays.asList(images));
     }
 
     /**
@@ -120,8 +126,8 @@ public class StfalconImageViewer<T> {
      */
     public static class Builder<T> {
 
-        private Context context;
-        private BuilderData<T> data;
+        private final Context context;
+        private final BuilderData<T> data;
 
         public Builder(Context context, T[] images, ImageLoader<T> imageLoader) {
             this(context, new ArrayList<>(Arrays.asList(images)), imageLoader);

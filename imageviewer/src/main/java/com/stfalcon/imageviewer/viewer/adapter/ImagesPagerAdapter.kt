@@ -17,7 +17,6 @@
 package com.stfalcon.imageviewer.viewer.adapter
 
 import android.content.Context
-import android.view.View
 import android.view.ViewGroup
 import com.github.chrisbanes.photoview.PhotoView
 import com.stfalcon.imageviewer.common.extensions.resetScale
@@ -26,16 +25,15 @@ import com.stfalcon.imageviewer.loader.ImageLoader
 
 internal class ImagesPagerAdapter<T>(
     private val context: Context,
-    _images: List<T>,
+    private var images: List<T>,
     private val imageLoader: ImageLoader<T>,
     private val isZoomingAllowed: Boolean
 ) : RecyclingPagerAdapter<ImagesPagerAdapter<T>.ViewHolder>() {
 
-    private var images = _images
     private val holders = mutableListOf<ViewHolder>()
 
     fun isScaled(position: Int): Boolean =
-        holders.firstOrNull { it.position == position }?.isScaled ?: false
+        holders.firstOrNull { it.position == position }?.isScaled == true
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val photoView = PhotoView(context).apply {
@@ -48,7 +46,7 @@ internal class ImagesPagerAdapter<T>(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(position)
 
-    override fun getItemCount() = images.size
+    override fun getItemCount(): Int = images.size
 
     internal fun updateImages(images: List<T>) {
         this.images = images
@@ -58,19 +56,17 @@ internal class ImagesPagerAdapter<T>(
     internal fun resetScale(position: Int) =
         holders.firstOrNull { it.position == position }?.resetScale()
 
-    internal inner class ViewHolder(itemView: View)
-        : RecyclingPagerAdapter.ViewHolder(itemView) {
+    internal inner class ViewHolder(private val photoView: PhotoView) :
+        RecyclingPagerAdapter.ViewHolder(photoView) {
 
-        internal var isScaled: Boolean = false
+        internal val isScaled: Boolean
             get() = photoView.scale > 1f
-
-        private val photoView: PhotoView = itemView as PhotoView
 
         fun bind(position: Int) {
             this.position = position
             imageLoader.loadImage(photoView, images[position])
         }
 
-        fun resetScale() = photoView.resetScale(animate = true)
+        fun resetScale() = photoView.resetScale(true)
     }
 }

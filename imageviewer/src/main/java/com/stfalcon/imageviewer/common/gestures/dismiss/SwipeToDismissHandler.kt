@@ -40,20 +40,20 @@ internal class SwipeToDismissHandler(
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouch(v: View, event: MotionEvent): Boolean {
-        when (event.action) {
+        return when (event.action) {
             MotionEvent.ACTION_DOWN -> {
                 if (swipeView.hitRect.contains(event.x.toInt(), event.y.toInt())) {
                     isTracking = true
                 }
                 startY = event.y
-                return true
+                true
             }
             MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
                 if (isTracking) {
                     isTracking = false
                     onTrackingEnd(v.height)
                 }
-                return true
+                true
             }
             MotionEvent.ACTION_MOVE -> {
                 if (isTracking) {
@@ -61,11 +61,9 @@ internal class SwipeToDismissHandler(
                     swipeView.translationY = translationY
                     onSwipeViewMove(translationY, translationLimit)
                 }
-                return true
+                true
             }
-            else -> {
-                return false
-            }
+            else -> false
         }
     }
 
