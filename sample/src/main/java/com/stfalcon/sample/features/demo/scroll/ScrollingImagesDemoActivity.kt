@@ -2,22 +2,23 @@ package com.stfalcon.sample.features.demo.scroll
 
 import android.os.Bundle
 import android.widget.ImageView
-import androidx.appcompat.app.AppCompatActivity
+import coil.load
 import com.stfalcon.imageviewer.StfalconImageViewer
 import com.stfalcon.sample.R
 import com.stfalcon.sample.common.extensions.getDrawableCompat
-import com.stfalcon.sample.common.extensions.loadImage
 import com.stfalcon.sample.common.models.Demo
+import com.stfalcon.sample.common.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_demo_scrolling_images.*
 
-class ScrollingImagesDemoActivity : AppCompatActivity() {
+class ScrollingImagesDemoActivity : BaseActivity() {
 
     private val horizontalImageViews by lazy {
         listOf(
             scrollingHorizontalFirstImage,
             scrollingHorizontalSecondImage,
             scrollingHorizontalThirdImage,
-            scrollingHorizontalFourthImage)
+            scrollingHorizontalFourthImage
+        )
     }
 
     private val verticalImageViews by lazy {
@@ -25,7 +26,8 @@ class ScrollingImagesDemoActivity : AppCompatActivity() {
             scrollingVerticalFirstImage,
             scrollingVerticalSecondImage,
             scrollingVerticalThirdImage,
-            scrollingVerticalFourthImage)
+            scrollingVerticalFourthImage
+        )
     }
 
     private lateinit var viewer: StfalconImageViewer<String>
@@ -53,7 +55,8 @@ class ScrollingImagesDemoActivity : AppCompatActivity() {
         startPosition: Int,
         target: ImageView,
         images: List<String>,
-        imageViews: List<ImageView>) {
+        imageViews: List<ImageView>
+    ) {
         viewer = StfalconImageViewer.Builder<String>(this, images, ::loadImage)
             .withStartPosition(startPosition)
             .withTransitionFrom(target)
@@ -64,7 +67,7 @@ class ScrollingImagesDemoActivity : AppCompatActivity() {
     private fun loadImage(imageView: ImageView, url: String?) {
         imageView.apply {
             background = getDrawableCompat(R.drawable.shape_placeholder)
-            loadImage(url)
+            load(url)
         }
     }
 }

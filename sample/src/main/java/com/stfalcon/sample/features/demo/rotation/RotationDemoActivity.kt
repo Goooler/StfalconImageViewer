@@ -6,12 +6,12 @@ import androidx.appcompat.app.AppCompatActivity
 import com.stfalcon.imageviewer.StfalconImageViewer
 import com.stfalcon.sample.R
 import com.stfalcon.sample.common.extensions.getDrawableCompat
-import com.stfalcon.sample.common.extensions.loadImage
 import com.stfalcon.sample.common.models.Demo
 import com.stfalcon.sample.common.models.Poster
+import com.stfalcon.sample.common.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_demo_rotation.*
 
-class RotationDemoActivity : AppCompatActivity() {
+class RotationDemoActivity : BaseActivity() {
 
     companion object {
         private const val KEY_IS_DIALOG_SHOWN = "IS_DIALOG_SHOWN"
@@ -67,11 +67,9 @@ class RotationDemoActivity : AppCompatActivity() {
         isDialogShown = true
     }
 
-    private fun loadPosterImage(imageView: ImageView, poster: Poster?) {
-        imageView.apply {
-            background = getDrawableCompat(R.drawable.shape_placeholder)
-            loadImage(poster?.url)
-        }
+    override fun loadPosterImage(imageView: ImageView, poster: Poster?) {
+        imageView.background = getDrawableCompat(R.drawable.shape_placeholder)
+        super.loadPosterImage(imageView, poster)
     }
 
     private fun getTransitionTarget(position: Int) =
