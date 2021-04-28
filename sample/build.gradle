@@ -29,5 +29,5 @@ dependencies {
 
     //UI
     implementation 'com.squareup.picasso:picasso:2.71828'
-    implementation 'me.relex:circleindicator:2.1.0'
+    implementation 'me.relex:circleindicator:2.1.6'
 }
