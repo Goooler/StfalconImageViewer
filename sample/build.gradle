@@ -1,6 +1,6 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+apply plugin: "com.android.application"
+apply plugin: "kotlin-android"
+apply plugin: "kotlin-android-extensions"
 
 android {
     compileSdkVersion 30
@@ -16,18 +16,17 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
 
 dependencies {
-    implementation project(':imageviewer')
-    implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
+    implementation project(":imageviewer")
+    implementation "androidx.cardview:cardview:1.0.0"
+    implementation "androidx.constraintlayout:constraintlayout:2.0.4"
+    implementation "androidx.coordinatorlayout:coordinatorlayout:1.1.0"
 
     //UI
-    implementation 'com.squareup.picasso:picasso:2.71828'
-    implementation 'me.relex:circleindicator:2.1.6'
+    implementation "io.coil-kt:coil:1.2.1"
+    implementation "me.relex:circleindicator:2.1.6"
 }
