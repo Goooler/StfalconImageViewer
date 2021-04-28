@@ -24,7 +24,15 @@ import android.widget.ImageView
 import androidx.transition.AutoTransition
 import androidx.transition.Transition
 import androidx.transition.TransitionManager
-import com.stfalcon.imageviewer.common.extensions.*
+import com.stfalcon.imageviewer.common.extensions.addListener
+import com.stfalcon.imageviewer.common.extensions.applyMargin
+import com.stfalcon.imageviewer.common.extensions.globalVisibleRect
+import com.stfalcon.imageviewer.common.extensions.isRectVisible
+import com.stfalcon.imageviewer.common.extensions.localVisibleRect
+import com.stfalcon.imageviewer.common.extensions.makeViewMatchParent
+import com.stfalcon.imageviewer.common.extensions.postApply
+import com.stfalcon.imageviewer.common.extensions.postDelayed
+import com.stfalcon.imageviewer.common.extensions.requestNewSize
 
 internal class TransitionImageAnimator(
     private val externalImage: ImageView?,
@@ -96,7 +104,8 @@ internal class TransitionImageAnimator(
                 containerPadding[0],
                 containerPadding[1],
                 containerPadding[2],
-                containerPadding[3])
+                containerPadding[3]
+            )
 
             internalImageContainer.requestLayout()
         }

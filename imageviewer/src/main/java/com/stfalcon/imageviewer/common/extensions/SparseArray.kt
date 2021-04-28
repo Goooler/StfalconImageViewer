@@ -17,7 +17,7 @@
 package com.stfalcon.imageviewer.common.extensions
 
 import android.util.SparseArray
-import java.util.ConcurrentModificationException
+import java.util.*
 
 internal inline fun <T> SparseArray<T>.forEach(block: (Int, T) -> Unit) {
     val size = this.size()

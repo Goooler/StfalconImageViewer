@@ -7,6 +7,6 @@
     <com.stfalcon.sample.common.ui.views.PostersGridView
         android:id="@+id/postersGridView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -4,7 +4,7 @@
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@drawable/ic_placeholder"/>
+            android:src="@drawable/ic_placeholder" />
     </item>
 
 </layer-list>

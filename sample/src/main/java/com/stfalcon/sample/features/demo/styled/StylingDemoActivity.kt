@@ -109,6 +109,11 @@ class StylingDemoActivity : BaseActivity() {
 
     private fun getRandomColor(): Int {
         val random = java.util.Random()
-        return android.graphics.Color.argb(255, random.nextInt(156), random.nextInt(156), random.nextInt(156))
+        return android.graphics.Color.argb(
+            255,
+            random.nextInt(156),
+            random.nextInt(156),
+            random.nextInt(156)
+        )
     }
 }

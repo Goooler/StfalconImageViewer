@@ -2,7 +2,6 @@ package com.stfalcon.sample.features.demo.rotation
 
 import android.os.Bundle
 import android.widget.ImageView
-import androidx.appcompat.app.AppCompatActivity
 import com.stfalcon.imageviewer.StfalconImageViewer
 import com.stfalcon.sample.R
 import com.stfalcon.sample.common.extensions.getDrawableCompat

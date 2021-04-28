@@ -23,7 +23,8 @@ class StylingOptions {
         SWIPE_TO_DISMISS to true,
         ZOOMING to true,
         SHOW_OVERLAY to true,
-        RANDOM_BACKGROUND to false)
+        RANDOM_BACKGROUND to false
+    )
 
     fun isPropertyEnabled(property: Property): Boolean {
         return options[property] == true

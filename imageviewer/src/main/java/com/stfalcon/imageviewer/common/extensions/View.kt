@@ -76,7 +76,8 @@ internal fun View.applyMargin(
 }
 
 internal fun View.requestNewSize(
-    width: Int, height: Int) {
+    width: Int, height: Int
+) {
     layoutParams.width = width
     layoutParams.height = height
     layoutParams = layoutParams
@@ -86,7 +87,8 @@ internal fun View.makeViewMatchParent() {
     applyMargin(0, 0, 0, 0)
     requestNewSize(
         ViewGroup.LayoutParams.MATCH_PARENT,
-        ViewGroup.LayoutParams.MATCH_PARENT)
+        ViewGroup.LayoutParams.MATCH_PARENT
+    )
 }
 
 internal fun View.animateAlpha(from: Float?, to: Float?, duration: Long) {

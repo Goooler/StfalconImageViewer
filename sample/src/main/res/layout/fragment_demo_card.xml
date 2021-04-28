@@ -24,7 +24,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed"/>
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
             android:id="@+id/demoCardDescriptionText"
@@ -38,7 +38,7 @@
             app:layout_constraintBottom_toTopOf="@+id/demoCardActionButton"
             app:layout_constraintEnd_toEndOf="@+id/demoCardTitleText"
             app:layout_constraintStart_toStartOf="@+id/demoCardTitleText"
-            app:layout_constraintTop_toBottomOf="@+id/demoCardTitleText"/>
+            app:layout_constraintTop_toBottomOf="@+id/demoCardTitleText" />
 
         <Button
             android:id="@+id/demoCardActionButton"
@@ -52,7 +52,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/demoCardDescriptionText"/>
+            app:layout_constraintTop_toBottomOf="@+id/demoCardDescriptionText" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

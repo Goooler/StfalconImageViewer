@@ -29,7 +29,8 @@ class PostersGridView @JvmOverloads constructor(
             5 to postersSixthImage,
             6 to postersSeventhImage,
             7 to postersEighthImage,
-            8 to postersNinthImage)
+            8 to postersNinthImage
+        )
     }
 
     init {

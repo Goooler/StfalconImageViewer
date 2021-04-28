@@ -43,39 +43,39 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:fontFamily="sans-serif-medium"
-                            app:drawableBottomCompat="@drawable/ic_arrow_right"
                             android:gravity="center"
                             android:padding="16dp"
                             android:text="@string/scroll_me_horizontally"
                             android:textAllCaps="true"
-                            android:textColor="@color/textColorSecondary"/>
+                            android:textColor="@color/textColorSecondary"
+                            app:drawableBottomCompat="@drawable/ic_arrow_right" />
 
                         <ImageView
                             android:id="@+id/scrollingHorizontalFirstImage"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            tools:ignore="ContentDescription"/>
+                            tools:ignore="ContentDescription" />
 
                         <ImageView
                             android:id="@+id/scrollingHorizontalSecondImage"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="25dp"
-                            tools:ignore="ContentDescription"/>
+                            tools:ignore="ContentDescription" />
 
                         <ImageView
                             android:id="@+id/scrollingHorizontalThirdImage"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="25dp"
-                            tools:ignore="ContentDescription"/>
+                            tools:ignore="ContentDescription" />
 
                         <ImageView
                             android:id="@+id/scrollingHorizontalFourthImage"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="25dp"
-                            tools:ignore="ContentDescription"/>
+                            tools:ignore="ContentDescription" />
 
                     </LinearLayout>
 
@@ -87,15 +87,15 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:fontFamily="sans-serif-medium"
-                    app:drawableTopCompat="@drawable/ic_arrow_up"
                     android:gravity="center"
                     android:padding="12dp"
                     android:text="@string/scroll_me_vertically"
                     android:textAllCaps="true"
                     android:textColor="@color/textColorSecondary"
+                    app:drawableTopCompat="@drawable/ic_arrow_up"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/scrollingHorizontalScrollView"/>
+                    app:layout_constraintTop_toBottomOf="@+id/scrollingHorizontalScrollView" />
 
                 <ImageView
                     android:id="@+id/scrollingVerticalFirstImage"
@@ -105,7 +105,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/scrollingVerticalLabel"
-                    tools:ignore="ContentDescription"/>
+                    tools:ignore="ContentDescription" />
 
                 <ImageView
                     android:id="@+id/scrollingVerticalSecondImage"
@@ -116,7 +116,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/scrollingVerticalFirstImage"
-                    tools:ignore="ContentDescription"/>
+                    tools:ignore="ContentDescription" />
 
                 <ImageView
                     android:id="@+id/scrollingVerticalThirdImage"
@@ -127,7 +127,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/scrollingVerticalSecondImage"
-                    tools:ignore="ContentDescription"/>
+                    tools:ignore="ContentDescription" />
 
                 <ImageView
                     android:id="@+id/scrollingVerticalFourthImage"
@@ -138,7 +138,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/scrollingVerticalThirdImage"
-                    tools:ignore="ContentDescription"/>
+                    tools:ignore="ContentDescription" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

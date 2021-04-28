@@ -109,7 +109,7 @@ public class StfalconImageViewer<T> {
         return dialog.getCurrentPosition();
     }
 
-    public int setCurrentPosition(int position){
+    public int setCurrentPosition(int position) {
         return dialog.setCurrentPosition(position);
     }
 
