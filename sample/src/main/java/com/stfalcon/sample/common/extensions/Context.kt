@@ -15,7 +15,6 @@ fun Context.showShortToast(text: String?) {
     Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
 }
 
-
 fun Context.getDrawableCompat(@DrawableRes drawableRes: Int): Drawable? {
     return AppCompatResources.getDrawable(this, drawableRes)
 }
