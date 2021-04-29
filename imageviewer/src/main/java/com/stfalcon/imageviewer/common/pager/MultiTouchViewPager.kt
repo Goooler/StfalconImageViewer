@@ -32,7 +32,7 @@ internal class MultiTouchViewPager @JvmOverloads constructor(
         private set
 
     private var isInterceptionDisallowed: Boolean = false
-    private var pageChangeListener: ViewPager.OnPageChangeListener? = null
+    private var pageChangeListener: OnPageChangeListener? = null
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
@@ -84,6 +84,6 @@ internal class MultiTouchViewPager @JvmOverloads constructor(
     }
 
     private fun onPageScrollStateChanged(state: Int) {
-        isIdle = state == ViewPager.SCROLL_STATE_IDLE
+        isIdle = state == SCROLL_STATE_IDLE
     }
 }

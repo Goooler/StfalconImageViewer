@@ -56,7 +56,7 @@ class DemoCardFragment : Fragment() {
         if (context is OnCardActionListener) {
             cardActionListener = context
         } else {
-            throw RuntimeException(context.toString() + " must to implement the OnCardActionListener")
+            throw RuntimeException("$context must to implement the OnCardActionListener")
         }
     }
 
