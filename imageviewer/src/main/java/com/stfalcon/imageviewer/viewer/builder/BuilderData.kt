@@ -26,7 +26,7 @@ import com.stfalcon.imageviewer.listeners.OnDismissListener
 import com.stfalcon.imageviewer.listeners.OnImageChangeListener
 import com.stfalcon.imageviewer.loader.ImageLoader
 
-class BuilderData<T>(
+internal class BuilderData<T>(
     val images: List<T>,
     val imageLoader: ImageLoader<T>
 ) {

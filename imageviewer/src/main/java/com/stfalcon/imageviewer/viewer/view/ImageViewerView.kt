@@ -25,6 +25,7 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.RelativeLayout
+import androidx.annotation.Px
 import androidx.core.view.GestureDetectorCompat
 import com.stfalcon.imageviewer.R
 import com.stfalcon.imageviewer.common.extensions.addOnPageChangeListener
@@ -73,9 +74,10 @@ internal class ImageViewerView<T> @JvmOverloads constructor(
 
     internal var containerPadding = intArrayOf(0, 0, 0, 0)
 
-    internal var imagesMargin
+    @get:Px
+    internal var imagesMargin: Int
         get() = imagesPager.pageMargin
-        set(value) {
+        set(@Px value) {
             imagesPager.pageMargin = value
         }
 
@@ -101,12 +103,12 @@ internal class ImageViewerView<T> @JvmOverloads constructor(
     private var scaleDetector: ScaleGestureDetector
     private lateinit var swipeDismissHandler: SwipeToDismissHandler
 
-    private var wasScaled: Boolean = false
+    private var wasScaled = false
     private var wasDoubleTapped = false
-    private var isOverlayWasClicked: Boolean = false
+    private var isOverlayWasClicked = false
     private var swipeDirection: SwipeDirection? = null
 
-    private var images: List<T> = listOf()
+    private var images = listOf<T>()
     private var imageLoader: ImageLoader<T>? = null
     private lateinit var transitionImageAnimator: TransitionImageAnimator
 

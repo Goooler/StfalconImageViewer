@@ -41,7 +41,7 @@ internal class ImagesPagerAdapter<T>(
             setOnViewDragListener { _, _ -> setAllowParentInterceptOnEdge(scale == 1.0f) }
         }
 
-        return ViewHolder(photoView).also { holders.add(it) }
+        return ViewHolder(photoView).also(holders::add)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(position)
@@ -62,11 +62,11 @@ internal class ImagesPagerAdapter<T>(
         internal val isScaled: Boolean
             get() = photoView.scale > 1f
 
-        fun bind(position: Int) {
+        internal fun bind(position: Int) {
             this.position = position
             imageLoader.loadImage(photoView, images[position])
         }
 
-        fun resetScale() = photoView.resetScale(true)
+        internal fun resetScale() = photoView.resetScale(true)
     }
 }

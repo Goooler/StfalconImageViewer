@@ -15,9 +15,11 @@
  */
 package com.stfalcon.imageviewer.listeners
 
+import androidx.annotation.IntRange
+
 /**
  * Interface definition for a callback to be invoked when current image position was changed.
  */
 fun interface OnImageChangeListener {
-    fun onImageChange(position: Int)
+    fun onImageChange(@IntRange(from = 0) position: Int)
 }

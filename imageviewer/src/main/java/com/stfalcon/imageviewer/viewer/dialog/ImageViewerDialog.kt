@@ -19,6 +19,7 @@ package com.stfalcon.imageviewer.viewer.dialog
 import android.content.Context
 import android.view.KeyEvent
 import android.widget.ImageView
+import androidx.annotation.StyleRes
 import androidx.appcompat.app.AlertDialog
 import com.stfalcon.imageviewer.R
 import com.stfalcon.imageviewer.viewer.builder.BuilderData
@@ -30,9 +31,10 @@ internal class ImageViewerDialog<T>(
 ) {
 
     private val dialog: AlertDialog
-    private val viewerView: ImageViewerView<T> = ImageViewerView(context)
+    private val viewerView = ImageViewerView<T>(context)
     private var animateOpen = true
 
+    @get:StyleRes
     private val dialogStyle: Int
         get() = if (builderData.shouldStatusBarHide)
             R.style.ImageViewerDialog_NoStatusBar

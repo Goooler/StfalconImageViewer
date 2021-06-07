@@ -24,9 +24,7 @@ internal abstract class RecyclingPagerAdapter<VH : RecyclingPagerAdapter.ViewHol
     private var savedStates = SparseArray<Parcelable>()
 
     override fun destroyItem(parent: ViewGroup, position: Int, item: Any) {
-        if (item is ViewHolder) {
-            item.detach(parent)
-        }
+        (item as? ViewHolder)?.detach(parent)
     }
 
     override fun getCount() = getItemCount()
@@ -51,7 +49,7 @@ internal abstract class RecyclingPagerAdapter<VH : RecyclingPagerAdapter.ViewHol
     }
 
     override fun isViewFromObject(view: View, obj: Any): Boolean =
-        obj is ViewHolder && obj.itemView === view
+        (obj as? ViewHolder)?.itemView === view
 
     override fun saveState(): Parcelable? {
         for (viewHolder in getAttachedViewHolders()) {
@@ -76,9 +74,7 @@ internal abstract class RecyclingPagerAdapter<VH : RecyclingPagerAdapter.ViewHol
 
         typeCaches.forEach { _, value ->
             value.caches.forEach { holder ->
-                if (holder.isAttached) {
-                    attachedViewHolders.add(holder)
-                }
+                if (holder.isAttached) attachedViewHolders.add(holder)
             }
         }
 
