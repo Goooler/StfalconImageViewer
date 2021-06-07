@@ -27,6 +27,6 @@ dependencies {
     implementation "androidx.coordinatorlayout:coordinatorlayout:1.1.0"
 
     //UI
-    implementation "io.coil-kt:coil:1.2.1"
+    implementation "io.coil-kt:coil:1.2.2"
     implementation "me.relex:circleindicator:2.1.6"
 }
