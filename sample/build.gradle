@@ -1,15 +1,17 @@
-apply plugin: "com.android.application"
-
-apply from: "$rootDir/gradle/base.gradle"
-
-apply plugin: "kotlin-android-extensions"
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "kotlin-android-extensions"
+}
 
 android {
+    compileSdk 30
     defaultConfig {
         applicationId "com.stfalcon.stfalconimageviewersample"
+        minSdk 19
+        targetSdk 30
         versionCode 1
         versionName "1.0"
-        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
         release {
