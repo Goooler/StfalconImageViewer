@@ -96,7 +96,7 @@ internal class SwipeToDismissHandler(
                     onDismiss()
                 }
 
-                //remove the update listener, otherwise it will be saved on the next animation execution:
+                // remove the update listener, otherwise it will be saved on the next animation execution:
                 swipeView.animate().setUpdateListener(null)
             })
             .start()
