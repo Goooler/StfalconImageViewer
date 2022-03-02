@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
 import com.stfalcon.imageviewer.common.extensions.forEach
 
-internal abstract class RecyclingPagerAdapter<VH : RecyclingPagerAdapter.ViewHolder>
-    : PagerAdapter() {
+internal abstract class RecyclingPagerAdapter<VH : RecyclingPagerAdapter.ViewHolder> :
+    PagerAdapter() {
 
     companion object {
         private val STATE = RecyclingPagerAdapter::class.java.simpleName

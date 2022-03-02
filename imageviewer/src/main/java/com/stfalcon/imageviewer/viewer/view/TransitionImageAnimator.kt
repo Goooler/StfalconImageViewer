@@ -87,15 +87,18 @@ internal class TransitionImageAnimator(
         prepareTransitionLayout()
 
         internalRoot.postApply {
-            //ain't nothing but a kludge to prevent blinking when transition is starting
+            // ain't nothing but a kludge to prevent blinking when transition is starting
             externalImage?.postDelayed(50) { visibility = View.INVISIBLE }
 
-            TransitionManager.beginDelayedTransition(internalRoot, createTransition {
-                if (!isClosing) {
-                    isAnimating = false
-                    onTransitionEnd()
+            TransitionManager.beginDelayedTransition(
+                internalRoot,
+                createTransition {
+                    if (!isClosing) {
+                        isAnimating = false
+                        onTransitionEnd()
+                    }
                 }
-            })
+            )
 
             internalImageContainer.makeViewMatchParent()
             internalImage.makeViewMatchParent()
@@ -116,7 +119,8 @@ internal class TransitionImageAnimator(
         isClosing = true
 
         TransitionManager.beginDelayedTransition(
-            internalRoot, createTransition { handleCloseTransitionEnd(onTransitionEnd) })
+            internalRoot, createTransition { handleCloseTransitionEnd(onTransitionEnd) }
+        )
 
         prepareTransitionLayout()
         internalImageContainer.requestLayout()

@@ -16,7 +16,8 @@ import com.stfalcon.sample.features.main.adapter.MainActivityPagerAdapter.Compan
 import com.stfalcon.sample.features.main.card.DemoCardFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(),
+class MainActivity :
+    AppCompatActivity(),
     DemoCardFragment.OnCardActionListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -15,7 +15,6 @@ import androidx.transition.Transition
 import androidx.viewpager.widget.ViewPager
 import com.github.chrisbanes.photoview.PhotoView
 
-
 internal fun ImageView.copyBitmapFrom(target: ImageView?) {
     target?.drawable?.let {
         if (it is BitmapDrawable) {

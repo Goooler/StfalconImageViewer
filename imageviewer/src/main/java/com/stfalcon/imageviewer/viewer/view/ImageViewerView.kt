@@ -119,9 +119,9 @@ internal class ImageViewerView<T> @JvmOverloads constructor(
         }
 
     private val shouldDismissToBottom: Boolean
-        get() = externalTransitionImageView == null
-                || !externalTransitionImageView.isRectVisible
-                || !isAtStartPosition
+        get() = externalTransitionImageView == null ||
+            !externalTransitionImageView.isRectVisible ||
+            !isAtStartPosition
 
     private val isAtStartPosition: Boolean
         get() = currentPosition == startPosition
@@ -143,7 +143,8 @@ internal class ImageViewerView<T> @JvmOverloads constructor(
                     if (isAtStartPosition) makeInvisible() else makeVisible()
                 }
                 onPageChange?.invoke(it)
-            })
+            }
+        )
 
         directionDetector = createSwipeDirectionDetector()
         gestureDetector = createGestureDetector()
@@ -159,7 +160,7 @@ internal class ImageViewerView<T> @JvmOverloads constructor(
             return true
         }
 
-        //one more tiny kludge to prevent single tap a one-finger zoom which is broken by the SDK
+        // one more tiny kludge to prevent single tap a one-finger zoom which is broken by the SDK
         if (wasDoubleTapped &&
             event.action == MotionEvent.ACTION_MOVE &&
             event.pointerCount == 1
@@ -238,7 +239,8 @@ internal class ImageViewerView<T> @JvmOverloads constructor(
                 backgroundView.animateAlpha(0f, 1f, duration)
                 overlayView?.animateAlpha(0f, 1f, duration)
             },
-            onTransitionEnd = { prepareViewsForViewer() })
+            onTransitionEnd = { prepareViewsForViewer() }
+        )
     }
 
     private fun animateClose() {
@@ -251,7 +253,8 @@ internal class ImageViewerView<T> @JvmOverloads constructor(
                 backgroundView.animateAlpha(backgroundView.alpha, 0f, duration)
                 overlayView?.animateAlpha(overlayView?.alpha, 0f, duration)
             },
-            onTransitionEnd = { onDismiss?.invoke() })
+            onTransitionEnd = { onDismiss?.invoke() }
+        )
     }
 
     private fun prepareViewsForTransition() {
@@ -333,18 +336,21 @@ internal class ImageViewerView<T> @JvmOverloads constructor(
         SwipeDirectionDetector(context) { swipeDirection = it }
 
     private fun createGestureDetector() =
-        GestureDetectorCompat(context, SimpleOnGestureListener(
-            onSingleTap = {
-                if (imagesPager.isIdle) {
-                    handleSingleTap(it, isOverlayWasClicked)
+        GestureDetectorCompat(
+            context,
+            SimpleOnGestureListener(
+                onSingleTap = {
+                    if (imagesPager.isIdle) {
+                        handleSingleTap(it, isOverlayWasClicked)
+                    }
+                    false
+                },
+                onDoubleTap = {
+                    wasDoubleTapped = !isScaled
+                    false
                 }
-                false
-            },
-            onDoubleTap = {
-                wasDoubleTapped = !isScaled
-                false
-            }
-        ))
+            )
+        )
 
     private fun createScaleGestureDetector() =
         ScaleGestureDetector(context, ScaleGestureDetector.SimpleOnScaleGestureListener())

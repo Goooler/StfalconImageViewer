@@ -20,9 +20,11 @@ fun Context.getDrawableCompat(@DrawableRes drawableRes: Int): Drawable? {
 }
 
 fun Context.sendShareIntent(text: String) {
-    startActivity(Intent().apply {
-        action = Intent.ACTION_SEND
-        putExtra(Intent.EXTRA_TEXT, text)
-        type = "text/plain"
-    })
+    startActivity(
+        Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, text)
+            type = "text/plain"
+        }
+    )
 }
